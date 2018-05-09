@@ -7,6 +7,16 @@ Chapter 23 - Object Oriented Programming (OOP)
 
 
 class User:
+    # Class Methods exist within the class and not in an instanace of a class
+    @classmethod
+    def display_active_users(cls):
+        return f"There are currently {cls.active_users} active users"
+
+    @classmethod
+    def from_str(cls, data_str):
+        first, last, age = data_str.split(",")
+        return cls(first, last, age)
+
     # Class variables can be accessed directly from the Class and not in all
     # instance
     active_users = 0
@@ -39,7 +49,8 @@ def main():
     user1 = User("Bill", "Kill", 15)
     user2 = User("John", "Smith", 71)
     print(User.active_users)
-
+    print(User.display_active_users())
+    
 
 if __name__ == "__main__":
     main()
